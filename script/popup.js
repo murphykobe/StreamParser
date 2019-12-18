@@ -7,11 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	function onclick(){
 		chrome.tabs.query({currentWindow: true, active: true},
 			function (tabs) {
+				
 				request(tabs[0].url);
 				setTimeout(function() {
-					alert(result);
+					if(result!=''){
+						alert(result);
+					}else{
+						chrome.tabs.create({url:jiexiUrL+tabs[0].url});
+					}
 					chrome.tabs.sendMessage(tabs[0].id,'hi');
-				  }, 3000);
+				}, 3000);
 
 			});
 	};
@@ -27,7 +32,6 @@ function request(url){
 	  if (xhr.status != 200) { // analyze HTTP status of the response
 		alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
 	  } else { // show the result
-		alert(`Done, got ${xhr.response.length} bytes`); 
 		result = xhr.responseText.match(re)[1];
 		// responseText is the server
 	  }
