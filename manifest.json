@@ -1,0 +1,27 @@
+{
+    "browser_action": {
+       "default_icon": "images/icons16.png",
+       "default_popup": "popup.html",
+       "default_title": "视频云解析"
+    },
+    "content_scripts": [ {
+       "js": [ "script/content.js" ],
+       "matches": [ "<all_urls>" ]
+    } ],
+    "description": "simple extension for iqiyi/youku/letv/qq/sohu/pptv",
+    "icons": {
+       "128": "images/icons128.png",
+       "16": "images/icons16.png",
+       "48": "images/icons48.png"
+    },
+    "manifest_version": 2,
+    "name": "StreamParser",
+    "version": "1.0",
+    "permissions": [
+        "tabs",
+        "storage",
+        "activeTab",
+        "cookies"   
+    ]
+ }
+ 
